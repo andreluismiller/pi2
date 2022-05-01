@@ -1,26 +1,26 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from usuarios.models import Produtor, Consumidor
 
 """
 Criação de classe usuário genérica com flag para os tipos específicos de usuários
 """
-class User(AbstractUser):
-    is_produtor = models.BooleanField(default=False)
-    is_consumidor = models.BooleanField(default=False)
+# class User(AbstractUser):
+#     is_produtor = models.BooleanField(default=False)
+#     is_consumidor = models.BooleanField(default=False)
 
 """
 Classe de usuário que fornece os produtos
 """
-class Produtor(models.Model):
-    usuario = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
-    nome = models.CharField(max_length=200, null=True)
-    email = models.CharField(max_length=200, null=True)
-    whatsapp = models.CharField(max_length=15, null=True)
-    endereco = models.CharField(max_length=200, null=True)
-    cpf = models.CharField(max_length=11, null=True)
+# class Produtor(models.Model):
+#     usuario = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
+#     nome = models.CharField(max_length=200, null=True)
+#     email = models.CharField(max_length=200, null=True)
+#     whatsapp = models.CharField(max_length=15, null=True)
+#     endereco = models.CharField(max_length=200, null=True)
+#     cpf = models.CharField(max_length=11, null=True)
 
-    def __str__(self):
-        return self.nome
+#     def __str__(self):
+#         return self.nome
 
 
 class Produto(models.Model):
@@ -55,15 +55,15 @@ class Produto(models.Model):
 Classe de usuários que trocam (consumem) os produtos ofertados
 """
 
-class Consumidor(models.Model):
-    usuario = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
-    nome = models.CharField(max_length=200, null=True)
-    email = models.CharField(max_length=200, null=True)
-    whatsapp = models.CharField(max_length=15, null=True)
-    cpf = models.CharField(max_length=11, null=True)
+# class Consumidor(models.Model):
+#     usuario = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
+#     nome = models.CharField(max_length=200, null=True)
+#     email = models.CharField(max_length=200, null=True)
+#     whatsapp = models.CharField(max_length=15, null=True)
+#     cpf = models.CharField(max_length=11, null=True)
 
-    def __str__(self):
-        return self.nome
+#     def __str__(self):
+#         return self.nome
 
 class Lista(models.Model):
     consumidor = models.ForeignKey(Consumidor, on_delete=models.CASCADE, blank=True, null=True)
