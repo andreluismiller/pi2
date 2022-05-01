@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'loja.apps.LojaConfig',
+    'usuarios.apps.UsuariosConfig',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +83,11 @@ DATABASES = {
 }
 
 
-AUTH_USER_MODEL = 'loja.User'
+# Necessário mudar o AUTH USER MODEL!!!!!!!!!!!!
+# ^^^^^^^^^^^
+AUTH_USER_MODEL = 'usuarios.User'
+# ^^^^^^^^^^^
+# Necessário mudar o AUTH USER MODEL!!!!!!!!!!!!
 
 
 # Password validation
